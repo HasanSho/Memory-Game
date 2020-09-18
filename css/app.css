@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Pacifico", cursive;
+}
+
+body {
+  background: #ffffff url("../img/geometry2.png"); /* Background pattern from Subtle Patterns */
+  font-family: "Pacifico", cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+  width: 660px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #8bc34a 0%, #e3fbc8 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
+}
+
+.deck .card {
+  height: 125px;
+  width: 125px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  transition: 0.3s;
+}
+
+.deck .card:hover {
+  box-shadow: 1px 1px 14px 0px #ffffff;
+}
+
+/*---- card click ----*/
+
+.deck .card.open {
+  transform: rotateY(180deg);
+  background: #02b3e4;
+  cursor: default;
+}
+
+/*---- show icon ----*/
+.deck .card.show {
+  font-size: 40px;
+}
+
+/*---- style the card if matched ----*/
+.deck .card.matched {
+  transform: translate(3px, 3px);
+  transition: 1s;
+  cursor: default;
+  background: #607d8b;
+  font-size: 50px;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+  display: flex;
+  justify-content: space-around;
+  min-width: 500px;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.score-panel .restart {
+  padding-top: 7px;
+}
+.stars {
+  margin: 0;
+  padding: 0;
+  color: #2196f3;
+  /*--- for modal ---*/
+  display: inline-block;
+  padding: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+  list-style: none;
+  display: inline-block;
+}
+
+.score-panel .restart {
+  float: right;
+  cursor: pointer;
+}
+
+/*----------Information/winning panel (Modal)------------ */
+
+.Info {
+  display: none;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000009c;
+}
+
+.info_box {
+  position: fixed;
+  background-color: #ececec;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 5%;
+  text-align: center;
+  border-radius: 95px;
+  box-shadow: 1px 1px 14px 9px #ff5722;
+
+  -webkit-animation-name: infoOpen;
+  animation-name: infoOpen;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+.info_box h1 {
+  font-weight: 300;
+  font-size: 30px;
+  background-color: #ff5722;
+  width: 100%;
+  border-radius: 35px;
+}
+
+.restart_btn {
+  color: #ffffff;
+  background-color: #252525;
+  width: 238px;
+  height: 35px;
+  border: 1px solid #efefef;
+  border-radius: 6px;
+  font-size: 1.2em;
+  outline: none;
+  cursor: pointer;
+}
+
+.restart_btn:hover {
+  background-color: #f3f3f3;
+  color: #2196f3;
+  transition: 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.btn_txt {
+  padding-right: 7px;
+}
+
+/*---- Label {New} ----*/
+
+.new {
+  font-size: 9pt;
+  border-radius: 3px;
+  background: linear-gradient(160deg, #ff0000 0%, #7b1a1a 100%);
+  box-shadow: 1px 2px 2px 0px #000000c7;
+  color: #ffffff;
+  padding: 4px;
+  display: inline-block;
+  transform: rotateZ(-19deg);
+}
+
+.rating_box li {
+  display: inline-block;
+}
+
+/*---- footer style ----*/
+
+.footer {
+  text-align: center;
+  padding: 1%;
+  background-color: #c5c5c5;
+  color: #607d8b;
+  border-top: 1px solid #525252;
+}
+.footer a {
+  text-decoration: none;
+  color: #126892;
+  padding: 1%;
+}
+.footer a:hover {
+  color: #ff5722;
+}
+
+/*-------Media quiries-------*/
+
+@media screen and (max-width: 700px) {
+  .deck {
+    width: 95%;
+    min-height: 500px;
+    margin: auto;
+  }
+  .deck .card {
+    width: 17vw;
+    height: 17vw;
+    margin: 1%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .info_box {
+    font-size: 0.8em;
+  }
+  .info_box h1 {
+    font-size: 1.5em;
+  }
+  .restart_btn {
+    width: 144px;
+    height: 55px;
+  }
+
+  .score-panel {
+    min-width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .score-panel {
+    flex-direction: column;
+    align-items: center;
+    min-width: auto;
+  }
+
+  .deck {
+    padding: 12px;
+    min-height: 330px;
+  }
+
+  .deck .card.show {
+    font-size: 30px;
+  }
+
+  .restart_btn {
+    width: 99px;
+    height: 35px;
+    font-size: 1em;
+  }
+
+  .info_box {
+    font-size: 0.6em;
+  }
+  .info_box h1 {
+    font-size: 1.1em;
+    margin: auto;
+    width: 70%;
+  }
+}
+
+/*-------Key Frames-------*/
+
+/*-- fade in on modal appearing --*/
+@keyframes infoOpen {
+  from {
+    transform: translate(0, -500px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
